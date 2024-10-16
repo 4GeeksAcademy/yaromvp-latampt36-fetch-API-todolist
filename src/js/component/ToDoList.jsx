@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ItemsLeft } from "./ItemsLeft";
 
-export const List = () => {
+export const ToDoList = () => {
 
       const [inputValue, setInputValue] = useState("");
       const [items, setItems] = useState([]);
@@ -11,22 +11,20 @@ export const List = () => {
       };
 
       const handleKeyDown = (event) => {
-            if (event.key === "Enter" && inputValue.trim() !== "") {
-                  const newItems = items.concat(inputValue.trim());
-                  setItems(newItems);
-                  setInputValue("");
+            if (event.key === 'Enter' && inputValue.trim() !== '') {
+                  setItems([...items, inputValue.trim()]);
+                  setInputValue('');
             }
       };
 
       const deleteItem = (id) => {
             setItems((prev) => {
-                  return prev.filter((itemToDelete) => {
-                        return prev.indexOf(itemToDelete) !== id
-                  })
-            })
+                  const newItems = [...prev];
+                  newItems.splice(id, 1);
+                  return newItems;
+            });
       }
 
-      console.log(items)
       useEffect(() => {
             setItems(items)
       }, [])
@@ -43,7 +41,11 @@ export const List = () => {
                   />
 
                   {items.map((item, index) => (
-                        <div key={index} className="viewCnt d-flex justify-content-between align-items-center bg-light border text-black-50 ps-5 pe-3 py-2 m-0">
+                        <div
+                              key={index}
+                              className="viewCnt d-flex justify-content-between align-items-center
+                              bg-light border text-black-50 ps-5 pe-3 py-2 m-0"
+                        >
                               <p className="p-0 m-0">{item}</p>
                               <button
                                     type="button"
