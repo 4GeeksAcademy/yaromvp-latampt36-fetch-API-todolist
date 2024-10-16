@@ -8,16 +8,15 @@ import { Bottom } from "./Bottom.jsx";
 
 const Home = () => {
 
-	const [item, setItem] = useState("");
-	const [list, setList] = useState([]);
+
 
 	return (
 		<div>
 			<Title />
 			<div className="border border-bottom-0 shadow-lg" style={{ width: "500px" }} >
-				<InputText />
+				{/*<InputText />*/}
 				<List />
-				<ItemsLeft />
+				{/*<ItemsLeft />*/}
 			</div>
 			<Bottom />
 		</div>

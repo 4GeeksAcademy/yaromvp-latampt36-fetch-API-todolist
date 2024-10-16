@@ -4,3 +4,10 @@ body {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
 }
+
+.viewCnt .viewBtn {
+    display: none;
+}
+.viewCnt:hover .viewBtn {
+    display: inline;
+}
